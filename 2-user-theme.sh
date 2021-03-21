@@ -30,5 +30,5 @@ cinnamon --replace > /dev/null 2>&1 & disown
 #gsettings set org.cinnamon panels-height "['1:40']"
 
 echo ""
-echo "#################   ${GREEN}User interface customized${CLEAR}   ################"
+echo -e "#################   ${GREEN}User interface customized${CLEAR}   ################"
 echo ""

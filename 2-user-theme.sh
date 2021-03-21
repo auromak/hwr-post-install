@@ -2,12 +2,17 @@
 #
 ##################################################################################################################
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CLEAR='\033[0m'
+
 echo ""
 echo "#################   Customize user interface   #################"
 echo ""
 echo "Writing configuration changes to dconf..."
 
 dconf write /org/cinnamon/desktop/interface/clock-use-24h false
+dconf write /org/cinnamon/alttab-switcher-style "'coverflow'"
 
 dconf write /org/cinnamon/panels-enabled "['1:0:bottom']"
 dconf write /org/cinnamon/panels-height "['1:48']"
@@ -25,5 +30,5 @@ cinnamon --replace > /dev/null 2>&1 & disown
 #gsettings set org.cinnamon panels-height "['1:40']"
 
 echo ""
-echo "#################   User interface customized   ################"
+echo "#################   ${GREEN}User interface customized${CLEAR}   ################"
 echo ""

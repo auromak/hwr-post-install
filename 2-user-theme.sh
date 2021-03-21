@@ -6,7 +6,6 @@ echo ""
 echo "#################   Customize user interface   #################"
 echo ""
 echo "Writing configuration changes to dconf..."
-###############################################################################################
 
 dconf write /org/cinnamon/desktop/interface/clock-use-24h false
 
@@ -18,8 +17,7 @@ dconf write /org/cinnamon/theme/name "'Mint-Y-Dark'"
 dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Dark'"
 dconf write /org/cinnamon/desktop/interface/icon-theme "'Papirus-Dark'"
 dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Dark'"
-#cinnamon --replace > /dev/null 2>&1 & disown
-
+cinnamon --replace > /dev/null 2>&1 & disown
 
 # Alternative method using gsettings:
 #gsettings set org.cinnamon.desktop.interface icon-theme Papirus-Dark

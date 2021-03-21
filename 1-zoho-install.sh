@@ -48,8 +48,7 @@ fi
 # Additional configurations
 
 
-# Cleanup
-#rm -r ~/Downloads/hwr-temp
+
 
 echo ""
 echo "#################   Core software installed   ##################"
@@ -64,4 +63,5 @@ while true; do
     esac
 done
 
-echo "am I still running?"
+# Cleanup
+rm -r ~/Downloads/hwr-temp

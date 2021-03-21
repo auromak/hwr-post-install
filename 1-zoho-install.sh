@@ -12,22 +12,18 @@ appletdir=/usr/share/cinnamon/applets/
 papirusdir=/usr/share/icons/Papirus/
 
 echo ""
-echo "################################################################"
 echo "################   Installing core software   ##################"
-echo "################################################################"
 echo ""
-# Update current system
-sudo apt update && sudo apt upgrade -y
 
-# Install software from 'normal' repositories
+# Update current system and install basic software
+sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl unzip
 
-###############################################################################################
 # create temporary working directory
 mkdir -p ~/Downloads/hwr-temp
 cd ~/Downloads/hwr-temp/
 
-# ZohoAssist Unattended Access Client
+# Check for and install ZohoAssist Unattended Access Client
 if [ -d "$zohodir" ]
 then
 	echo "ZohoAssist is already installed. Skipping..."
@@ -41,10 +37,10 @@ if [ -d "$papirusdir" ]
 then
 	echo "Papirus is already installed. Skipping..."
 else
-# Papirus Icons
+# Install Papirus Icons
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
 
-# Applets
+# Install Applets
 wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$appletdir"
 wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d /usr/share/cinnamon/applets/
 fi
@@ -52,15 +48,9 @@ fi
 # Additional configurations
 
 
-#ending
-#mkdir $HOME/Upload
-
-###############################################################################################
 # Cleanup
 rm -r ~/Downloads/hwr-temp
 
 echo ""
-echo "################################################################"
 echo "#################   Core software installed   ##################"
-echo "################################################################"
 echo ""

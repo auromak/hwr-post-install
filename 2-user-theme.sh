@@ -29,4 +29,3 @@ cinnamon --replace > /dev/null 2>&1 & disown
 echo ""
 echo "#################   User interface customized   ################"
 echo ""
-break;

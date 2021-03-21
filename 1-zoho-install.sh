@@ -28,7 +28,7 @@ cd ~/Downloads/hwr-temp/
 # Check for and install ZohoAssist Unattended Access Client
 if [ -d "$zohodir" ]
 then
-	echo -e "${GREEN}ZohoAssist is already installed. Skipping...${NC}"
+	echo -e "\n${GREEN}ZohoAssist is already installed. Skipping...${NC}"
 else
 	wget "https://assist.zoho.com/api/v2/install_urs?type=2&encapiKey=wSsVRa12%2BhehD%2F0uyTCsIrxrnQxUBluiFxx631Wk4nX5GqjE88c9xEKdAFOnGfkWFzJtQDNBpr14zUpU1TMGjtwtmAsAWSiF9mqRe1U4J3x1pL7mlDPPW21dkxOILIoLwwxtkg%3D%3D&app=linux&version=64bit&isDebian=true" -O zohoassist_1.0.0.1.deb
 	sudo dpkg -i zohoassist_1.0.0.1.deb
@@ -37,7 +37,7 @@ fi
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
 if [ -d "$papirusdir" ]
 then
-	echo -e "${GREEN}Papirus is already installed. Skipping...${NC}"
+	echo -e "\n${GREEN}Papirus is already installed. Skipping...${NC}"
 else
 # Install Papirus Icons
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | bash

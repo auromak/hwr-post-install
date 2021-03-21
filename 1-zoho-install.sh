@@ -42,15 +42,26 @@ wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-
 
 # Install Applets
 wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$appletdir"
-wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d /usr/share/cinnamon/applets/
+wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$appletdir"
 fi
 
 # Additional configurations
 
 
 # Cleanup
-rm -r ~/Downloads/hwr-temp
+#rm -r ~/Downloads/hwr-temp
 
 echo ""
 echo "#################   Core software installed   ##################"
 echo ""
+
+while true; do
+    read -p "Would you like to apply changes to this user? " yn
+    case $yn in
+        [Yy]* ) wget -qO- https://raw.githubusercontent.com/auromak/hwr-post-install/main/2-user-theme.sh | sh; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "am I still running?"

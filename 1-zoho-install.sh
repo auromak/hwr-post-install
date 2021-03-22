@@ -8,6 +8,7 @@
 zohodir=/usr/local/ZohoAssist/Service/
 appletdir=/usr/share/cinnamon/applets/
 papirusdir=/usr/share/icons/Papirus/
+hwrdir=/usr/share/hwrescue/
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CLEAR='\033[0m'
@@ -21,6 +22,8 @@ sudo apt install -y curl unzip
 
 # create temporary working directory
 mkdir -p ~/Downloads/hwr-temp && cd ~/Downloads/hwr-temp/
+sudo mkdir -p "${hwrdir}"
+
 
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
 if [ -d "$papirusdir" ]
@@ -33,17 +36,14 @@ wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-
 # Install Applets
 wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$appletdir"
 wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$appletdir"
+
+# Install Extensions
+wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d /usr/share/cinnamon/extensions/
+sudo wget -O "$hwrdir"hwr-watermark.svg https://github.com/auromak/hwr-post-install/blob/main/HWR7-watermark-white-optimized-FINAL.svg
+
 fi
 
-# Check for and install ZohoAssist Unattended Access Client
-# if [ -d "$zohodir" ]
-# then
-# 	echo -e "\nZohoAssist is already ${GREEN}installed${CLEAR}. Skipping..."
-# else
-# 	wget "https://assist.zoho.com/api/v2/install_urs?type=2&encapiKey=wSsVRa12%2BhehD%2F0uyTCsIrxrnQxUBluiFxx631Wk4nX5GqjE88c9xEKdAFOnGfkWFzJtQDNBpr14zUpU1TMGjtwtmAsAWSiF9mqRe1U4J3x1pL7mlDPPW21dkxOILIoLwwxtkg%3D%3D&app=linux&version=64bit&isDebian=true" -O zohoassist_1.0.0.1.deb
-# 	sudo dpkg -i zohoassist_1.0.0.1.deb
-# fi
-
+# Check for and install ZohoAssist Unattended
 dpkg -l zohoassist > /dev/null 2>&1
 INSTALLED=$?
 if [ $INSTALLED == '0' ]; then

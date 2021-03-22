@@ -13,6 +13,7 @@ echo "Writing configuration changes to dconf..."
 
 dconf write /org/cinnamon/desktop/interface/clock-use-24h false
 dconf write /org/cinnamon/alttab-switcher-style "'coverflow'"
+dconf write /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action "'nothing'"
 
 dconf write /org/cinnamon/panels-enabled "['1:0:bottom']"
 dconf write /org/cinnamon/panels-height "['1:48']"

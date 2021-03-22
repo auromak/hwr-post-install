@@ -7,10 +7,8 @@ GREEN='\033[0;32m'
 CLEAR='\033[0m'
 
 echo ""
-echo "#################   Customize user interface   #################"
-echo ""
 echo "Writing configuration changes to dconf..."
-sleep 10
+sleep 1
 
 dconf write /org/cinnamon/desktop/interface/clock-use-24h false
 dconf write /org/cinnamon/alttab-switcher-style "'coverflow'"

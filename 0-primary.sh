@@ -18,10 +18,10 @@ wget -qO- https://raw.githubusercontent.com/auromak/hwr-post-install/main/2-user
 wget -qO- https://raw.githubusercontent.com/auromak/hwr-post-install/main/3-user-settings.sh | bash
 
 # Cleanup
-echo ""
 echo "Cleaning up temporary files..."
 rm -r ~/Downloads/hwr-temp
 echo "Done!"
+echo ""
 
 # Make one of the scripts optional
 #while true; do

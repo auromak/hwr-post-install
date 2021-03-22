@@ -18,6 +18,8 @@ wget -O ~/Downloads/hwr-temp/configs.tar https://github.com/auromak/hwr-post-ins
 sudo tar -xmvf ~/Downloads/hwr-temp/configs.tar -C ~/
 # -xpf
 
+cinnamon --replace > /dev/null 2>&1 & disown
+
 echo ""
 echo -e "#################   ${GREEN}User settings applied${CLEAR}   ################"
 echo ""

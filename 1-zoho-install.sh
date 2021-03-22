@@ -7,6 +7,7 @@
 
 zohodir=/usr/local/ZohoAssist/Service/
 appletdir=/usr/share/cinnamon/applets/
+extensiondir=/usr/share/cinnamon/extensions/
 papirusdir=/usr/share/icons/Papirus/
 hwrdir=/usr/share/hwrescue/
 RED='\033[0;31m'
@@ -18,7 +19,7 @@ echo "################   Installing core software   ##################"
 echo ""
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl unzip
+sudo apt install -y curl unzip dconf-editor
 
 # create temporary working directory
 mkdir -p ~/Downloads/hwr-temp && cd ~/Downloads/hwr-temp/
@@ -38,9 +39,8 @@ wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && s
 wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$appletdir"
 
 # Install Extensions
-wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d /usr/share/cinnamon/extensions/
-sudo wget -O "$hwrdir"hwr-watermark.svg https://github.com/auromak/hwr-post-install/blob/main/HWR7-watermark-white-optimized-FINAL.svg
-
+wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensiondir"
+sudo wget -O "$hwrdir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
 fi
 
 # Check for and install ZohoAssist Unattended

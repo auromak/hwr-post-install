@@ -7,10 +7,17 @@ GREEN='\033[0;32m'
 CLEAR='\033[0m'
 
 mkdir -p ~/Downloads/hwr-temp && cd ~/Downloads/hwr-temp/
-#tar -cpvf /home/oem/Desktop/configs.tar /home/oem/.cinnamon/configs/
-wget -O ~/Downloads/hwr-temp/configs.tar https://github.com/auromak/hwr-post-install/raw/main/configs.tar
-sudo tar -xpf ~/Downloads/hwr-temp/configs.tar -C /
+#tar -cmvf /home/oem/Desktop/configs.tar /home/oem/.cinnamon/configs/
+wget -O ~/Downloads/hwr-temp/configs.tar https://github.com/auromak/hwr-post-install/raw/main/2021-03-22-1654-backup.tar
+sudo tar -xmvf ~/Downloads/hwr-temp/configs.tar -C ~/
+# -xpf
 
 echo ""
 echo -e "#################   ${GREEN}User settings applied${CLEAR}   ################"
 echo ""
+
+
+
+# #tar -cmvf /home/oem/Desktop/configs.tar /home/oem/.cinnamon/configs/
+# wget -O ~/Downloads/hwr-temp/configs.tar https://github.com/auromak/hwr-post-install/raw/main/configs.tar
+# sudo tar -xmvf ~/Downloads/hwr-temp/configs.tar -C /

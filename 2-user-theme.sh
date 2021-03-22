@@ -10,6 +10,7 @@ echo ""
 echo "#################   Customize user interface   #################"
 echo ""
 echo "Writing configuration changes to dconf..."
+sleep 10
 
 dconf write /org/cinnamon/desktop/interface/clock-use-24h false
 dconf write /org/cinnamon/alttab-switcher-style "'coverflow'"

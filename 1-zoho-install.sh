@@ -21,10 +21,7 @@ echo ""
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl unzip dconf-editor
 
-# create temporary working directory
-mkdir -p ~/Downloads/hwr-temp && cd ~/Downloads/hwr-temp/
 sudo mkdir -p "${hwrdir}"
-
 
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
 if [ -d "$papirusdir" ]
@@ -56,11 +53,6 @@ fi
 # Additional configurations
 # ...
 # ...
-
-# Cleanup
-echo ""
-echo "Cleaning up temporary files..."
-rm -r ~/Downloads/hwr-temp
 
 echo ""
 echo -e "###############   ${GREEN}Finished installing software${CLEAR}   ###############"

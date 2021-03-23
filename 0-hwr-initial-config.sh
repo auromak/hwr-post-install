@@ -19,7 +19,7 @@ CLEAR='\033[0m'
 
 ## make sure you are sudo:
 if [[ $EUID -ne 0 ]]; then
-	exec sudo bash "$0" "$@" #run script as sudo or su
+	sudo bash "$0" "$@" #run script as sudo or su
 else
 	echo ""
 fi
@@ -100,6 +100,7 @@ tar -xmvf "$temp_dir"/configs.tar -C ~/
 echo ""
 echo -e "User ${GREEN}${BOLD}settings applied${CLEAR}"
 echo ""
+
 # Cleanup
 echo "Cleaning up temporary files..."
 rm -r "$temp_dir"

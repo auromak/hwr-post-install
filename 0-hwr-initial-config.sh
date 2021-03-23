@@ -92,5 +92,10 @@ tar -xmvf "$temp_dir"/configs.tar -C ~/
 
 echo ""
 echo -e "User ${GREEN}settings applied${CLEAR}"
+echo ""
+# Cleanup
+echo "Cleaning up temporary files..."
+rm -r "$temp_dir"
+echo ""
 echo "All done!"
 echo ""

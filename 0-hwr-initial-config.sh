@@ -16,6 +16,14 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 CLEAR='\033[0m'
 
+## make sure you are sudo:
+if [[ $EUID -ne 0 ]]; then
+	echo -e "Please enter password for sudo:\N"
+	exec sudo bash "$0" "$@" #run script as sudo or su
+else
+	echo ""
+fi
+
 echo ""
 echo "Installing core software:"
 echo ""

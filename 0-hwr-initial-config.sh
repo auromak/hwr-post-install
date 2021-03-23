@@ -9,7 +9,7 @@
 
 applet_dir=/usr/share/cinnamon/applets/
 extensions_dir=/usr/share/cinnamon/extensions/
-icons_dir=/usr/share/icons/Papirus/
+icons_dir=/usr/share/icons/
 hwr_dir=/usr/share/hwrescue/
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -34,7 +34,7 @@ else
 fi
 
 # Install Applets
-if [ -d "$applet_dir"Cinnamenu@json.zip/ ]
+if [ -d "$applet_dir"Cinnamenu*.zip/ ]
 then
 	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
 else

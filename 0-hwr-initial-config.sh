@@ -29,7 +29,7 @@ mkdir -p "$temp_dir" && cd "$temp_dir"
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
 if [ -d "$icons_dir"Papirus/ ]
 then
-	echo -e "\nPapirus is already ${GREEN}installed${CLEAR}. Skipping..."
+	echo -e "\nPapirus is ${GREEN}already installed${CLEAR}. Skipping..."
 else
 	# Install Papirus Icons
 	wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | bash
@@ -38,14 +38,14 @@ fi
 # Install Applets
 if [ -d "$applets_dir"Cinnamenu@json/ ]
 then
-	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
+	echo -e "\nCinnamenu is ${GREEN}already installed${CLEAR}. Skipping..."
 else
 	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applets_dir"
 fi
 
 if [ -d "$applets_dir"weather@mockturtl/ ]
 then
-	echo -e "\nWeather is already ${GREEN}installed${CLEAR}. Skipping..."
+	echo -e "\nWeather is ${GREEN}already installed${CLEAR}. Skipping..."
 else
 	wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applets_dir"
 fi
@@ -53,7 +53,7 @@ fi
 # Install Extensions
 if [ -d "$extensions_dir"watermark@germanfr/ ]
 then
-	echo -e "\nWatermark is already ${GREEN}installed${CLEAR}. Skipping..."
+	echo -e "\nWatermark is ${GREEN}already installed${CLEAR}. Skipping..."
 else
 	wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensions_dir"
 	sudo wget -O "$hwr_dir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
@@ -63,7 +63,7 @@ fi
 dpkg -l zohoassist > /dev/null 2>&1
 INSTALLED=$?
 if [ $INSTALLED == '0' ]; then
-	echo -e "\nZohoAssist is already ${GREEN}installed${CLEAR}. Skipping..."
+	echo -e "\nZohoAssist is ${GREEN}already installed${CLEAR}. Skipping..."
 else
 	wget "https://assist.zoho.com/api/v2/install_urs?type=2&encapiKey=wSsVRa12%2BhehD%2F0uyTCsIrxrnQxUBluiFxx631Wk4nX5GqjE88c9xEKdAFOnGfkWFzJtQDNBpr14zUpU1TMGjtwtmAsAWSiF9mqRe1U4J3x1pL7mlDPPW21dkxOILIoLwwxtkg%3D%3D&app=linux&version=64bit&isDebian=true" -O zohoassist_1.0.0.1.deb
 	sudo dpkg -i zohoassist_1.0.0.1.deb
@@ -74,7 +74,8 @@ fi
 # ...
 
 echo ""
-echo -e "${GREEN}Finished installing software and extensions${CLEAR}"
+echo -e "${GREEN}Finished installing${CLEAR} software and extensions"
+echo ""
 echo -e "Applying settings to current user:"
 echo ""
 
@@ -90,5 +91,6 @@ rm -rf ~/.mozilla ~/.cinnamon
 tar -xmvf "$temp_dir"/configs.tar -C ~/
 
 echo ""
-echo -e "${GREEN}User settings applied${CLEAR}"
+echo -e "User ${GREEN}settings applied${CLEAR}"
 echo "All done!"
+echo ""

@@ -4,10 +4,12 @@
 # To be run on fresh Linux Mint install.  Installs ZohoAssist Unattended Remote Service and
 # other required software, sets themes, etc.
 ###############################################################################################
+# Copy/paste the commented line below to run script from any terminal:
+# wget -qO- https://raw.githubusercontent.com/auromak/hwr-post-install/main/0-hwr-initial-config.sh | bash
 
 applet_dir=/usr/share/cinnamon/applets/
 extensions_dir=/usr/share/cinnamon/extensions/
-papirus_dir=/usr/share/icons/Papirus/
+icons_dir=/usr/share/icons/Papirus/
 hwr_dir=/usr/share/hwrescue/
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -23,20 +25,36 @@ sudo apt install -y curl unzip dconf-editor
 sudo mkdir -p "${hwr_dir}"
 
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
-if [ -d "$papirus_dir" ]
+if [ -d "$icons_dir"Papirus/ ]
 then
 	echo -e "\nPapirus is already ${GREEN}installed${CLEAR}. Skipping..."
 else
-# Install Papirus Icons
-wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | bash
+	# Install Papirus Icons
+	wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | bash
+fi
 
 # Install Applets
-wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
-wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applet_dir"
+if [ -d "$applet_dir"Cinnamenu@json.zip/ ]
+then
+	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
+else
+	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
+fi
+
+if [ -d "$applet_dir"weather@mockturtl.zip/ ]
+then
+	echo -e "\nWeather is already ${GREEN}installed${CLEAR}. Skipping..."
+else
+	wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applet_dir"
+fi
 
 # Install Extensions
-wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensions_dir"
-sudo wget -O "$hwr_dir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
+if [ -d "$applet_dir"watermark@germanfr.zip/ ]
+then
+	echo -e "\nWatermark is already ${GREEN}installed${CLEAR}. Skipping..."
+else
+	wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensions_dir"
+	sudo wget -O "$hwr_dir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
 fi
 
 # Check for and install ZohoAssist Unattended
@@ -49,12 +67,12 @@ else
 	sudo dpkg -i zohoassist_1.0.0.1.deb
 fi
 
-# Additional configurations
+#### Additional configurations
 # ...
 # ...
 
 echo ""
-echo -e "${GREEN}Finished installing software${CLEAR}"
+echo -e "${GREEN}Finished installing software and extensions${CLEAR}"
 echo -e "Applying settings to current user:"
 echo ""
 

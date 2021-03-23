@@ -7,7 +7,7 @@
 # Copy/paste the commented line below to run script from any terminal:
 # wget -qO- https://raw.githubusercontent.com/auromak/hwr-post-install/main/0-hwr-initial-config.sh | bash
 
-applet_dir=/usr/share/cinnamon/applets/
+applets_dir=/usr/share/cinnamon/applets/
 extensions_dir=/usr/share/cinnamon/extensions/
 icons_dir=/usr/share/icons/
 hwr_dir=/usr/share/hwrescue/
@@ -36,22 +36,22 @@ else
 fi
 
 # Install Applets
-if [ -d "$applet_dir"Cinnamenu@json/ ]
+if [ -d "$applets_dir"Cinnamenu@json/ ]
 then
 	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
 else
-	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
+	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applets_dir"
 fi
 
-if [ -d "$applet_dir"weather@mockturtl ]
+if [ -d "$applets_dir"weather@mockturtl/ ]
 then
 	echo -e "\nWeather is already ${GREEN}installed${CLEAR}. Skipping..."
 else
-	wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applet_dir"
+	wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applets_dir"
 fi
 
 # Install Extensions
-if [ -d "$applet_dir"watermark@germanfr/ ]
+if [ -d "$extensions_dir"watermark@germanfr/ ]
 then
 	echo -e "\nWatermark is already ${GREEN}installed${CLEAR}. Skipping..."
 else

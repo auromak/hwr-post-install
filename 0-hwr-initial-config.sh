@@ -34,14 +34,14 @@ else
 fi
 
 # Install Applets
-if [ -d "$applet_dir"Cinnamenu*.zip/ ]
+if [ -d "$applet_dir"Cinnamenu*/ ]
 then
 	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
 else
 	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
 fi
 
-if [ -d "$applet_dir"weather@mockturtl.zip/ ]
+if [ -d "$applet_dir"weather@mockturtl.zip ]
 then
 	echo -e "\nWeather is already ${GREEN}installed${CLEAR}. Skipping..."
 else

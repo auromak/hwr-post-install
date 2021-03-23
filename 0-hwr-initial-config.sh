@@ -11,6 +11,7 @@ applet_dir=/usr/share/cinnamon/applets/
 extensions_dir=/usr/share/cinnamon/extensions/
 icons_dir=/usr/share/icons/
 hwr_dir=/usr/share/hwrescue/
+temp_dir=~/Downloads/hwr-temp/
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CLEAR='\033[0m'
@@ -23,6 +24,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl unzip dconf-editor
 
 sudo mkdir -p "${hwr_dir}"
+mkdir -p "$temp_dir" && cd "$temp_dir"
 
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
 if [ -d "$icons_dir"Papirus/ ]
@@ -34,14 +36,14 @@ else
 fi
 
 # Install Applets
-if [ -d "$applet_dir"Cinnamenu*/ ]
+if [ -d "$applet_dir"Cinnamenu@json/ ]
 then
 	echo -e "\nCinnamenu is already ${GREEN}installed${CLEAR}. Skipping..."
 else
 	wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
 fi
 
-if [ -d "$applet_dir"weather@mockturtl.zip ]
+if [ -d "$applet_dir"weather@mockturtl ]
 then
 	echo -e "\nWeather is already ${GREEN}installed${CLEAR}. Skipping..."
 else
@@ -49,7 +51,7 @@ else
 fi
 
 # Install Extensions
-if [ -d "$applet_dir"watermark@germanfr.zip/ ]
+if [ -d "$applet_dir"watermark@germanfr/ ]
 then
 	echo -e "\nWatermark is already ${GREEN}installed${CLEAR}. Skipping..."
 else
@@ -77,15 +79,15 @@ echo -e "Applying settings to current user:"
 echo ""
 
 #### Load defaults into dconf
-wget -O ~/Downloads/hwr-temp/configured-dconf-backup https://github.com/auromak/hwr-post-install/raw/main/configured-dconf-backup
+wget -O "$temp_dir"/configured-dconf-backup https://github.com/auromak/hwr-post-install/raw/main/configured-dconf-backup
 dconf load /org/cinnamon/ < configured-dconf-backup
 cinnamon --replace > /dev/null 2>&1 & disown
 
 #### Load settings
 #tar -cmvf /home/oem/Desktop/configs.tar /home/oem/.cinnamon/configs/ # Deprecated, currently using Backup Tool in Mint
-wget -O ~/Downloads/hwr-temp/configs.tar https://github.com/auromak/hwr-post-install/raw/main/2021-03-22-1919-backup.tar
+wget -O "$temp_dir"/configs.tar https://github.com/auromak/hwr-post-install/raw/main/2021-03-22-1919-backup.tar
 rm -rf ~/.mozilla ~/.cinnamon
-tar -xmvf ~/Downloads/hwr-temp/configs.tar -C ~/
+tar -xmvf "$temp_dir"/configs.tar -C ~/
 
 echo ""
 echo -e "${GREEN}User settings applied${CLEAR}"

@@ -18,7 +18,7 @@ CLEAR='\033[0m'
 
 ## make sure you are sudo:
 if [[ $EUID -ne 0 ]]; then
-	echo -e "Please enter password for sudo:\N"
+	echo -e "Please enter password for sudo:\n"
 	exec sudo bash "$0" "$@" #run script as sudo or su
 else
 	echo ""

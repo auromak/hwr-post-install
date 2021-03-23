@@ -5,11 +5,10 @@
 # other required software, sets themes, etc.
 ###############################################################################################
 
-zohodir=/usr/local/ZohoAssist/Service/
-appletdir=/usr/share/cinnamon/applets/
-extensiondir=/usr/share/cinnamon/extensions/
-papirusdir=/usr/share/icons/Papirus/
-hwrdir=/usr/share/hwrescue/
+applet_dir=/usr/share/cinnamon/applets/
+extensions_dir=/usr/share/cinnamon/extensions/
+papirus_dir=/usr/share/icons/Papirus/
+hwr_dir=/usr/share/hwrescue/
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CLEAR='\033[0m'
@@ -21,10 +20,10 @@ echo ""
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl unzip dconf-editor
 
-sudo mkdir -p "${hwrdir}"
+sudo mkdir -p "${hwr_dir}"
 
 # Check for and install Papirus icons and misc applets (Skips all if Papirus is found)
-if [ -d "$papirusdir" ]
+if [ -d "$papirus_dir" ]
 then
 	echo -e "\nPapirus is already ${GREEN}installed${CLEAR}. Skipping..."
 else
@@ -32,12 +31,12 @@ else
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | bash
 
 # Install Applets
-wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$appletdir"
-wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$appletdir"
+wget https://cinnamon-spices.linuxmint.com/files/applets/Cinnamenu@json.zip && sudo unzip Cinnamenu@json.zip -d "$applet_dir"
+wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && sudo unzip weather@mockturtl.zip -d "$applet_dir"
 
 # Install Extensions
-wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensiondir"
-sudo wget -O "$hwrdir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
+wget https://cinnamon-spices.linuxmint.com/files/extensions/watermark@germanfr.zip && sudo unzip watermark@germanfr.zip -d "$extensions_dir"
+sudo wget -O "$hwr_dir"hwr-watermark.svg https://raw.githubusercontent.com/auromak/hwr-post-install/main/HWR7-watermark-white-optimized-FINAL.svg
 fi
 
 # Check for and install ZohoAssist Unattended
